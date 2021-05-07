@@ -8,6 +8,17 @@ var myPeer = new Peer(undefined, {
     port: "443"
 });
 
+var conn= myPeer.connect('userId');
+conn.on('open',function(){
+conn.send(userId);
+});
+
+myPeer.on('connection', function(conn) {
+    conn.on('data', function(data){
+      console.log(data);
+    });
+  });
+
 let myVideoStream;
 const myVideo = document.createElement("video");
 myVideo.muted = true;
